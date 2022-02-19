@@ -9,6 +9,8 @@ void call_print()
 {
     print(0, ""); <- we write our arguments to the shellcode so we can get it to call print how we like
 }
+
+Here is a very good tutorial on calling functions externally, which does include the shellcode method I use here: https://guidedhacking.com/threads/calling-functions-externally-the-definitive-guide.10509/
 '''
 shellcode = [
     0x55,                       #push ebp
