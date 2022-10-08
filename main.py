@@ -63,7 +63,7 @@ def rbx_print(print_type: int, string: str):
 
     write_proc_mem(handle, shellcode_mem + string_ptr_off, ctypes.byref(ctypes.c_uint32(string_mem)), ctypes.sizeof(ctypes.c_uint32), None) #write the address to the string we wrote to Roblox in our shellcode (so it will be passed as an argument to print)
     write_proc_mem(handle, shellcode_mem + print_type_off, ctypes.byref(ctypes.c_int8(print_type)), ctypes.sizeof(ctypes.c_int8), None) #write the type of print to the shellcode, again so it will be passed as an argument
-    write_proc_mem(handle, shellcode_mem + func_ptr_off, ctypes.byref(ctypes.c_uint32(get_relative(aslr(0x824A30), shellcode_mem + func_ptr_off) + 1)), ctypes.sizeof(ctypes.c_uint32), None) #write the *relative* address of print to the call instruction in our shellcode
+    write_proc_mem(handle, shellcode_mem + func_ptr_off, ctypes.byref(ctypes.c_uint32(get_relative(aslr(0x85FC20), shellcode_mem + func_ptr_off) + 1)), ctypes.sizeof(ctypes.c_uint32), None) #write the *relative* address of print to the call instruction in our shellcode
 
 
     create_remote_thread(handle, None, 0, shellcode_mem, 0, 0, 0) #create a new thread at the start of the shellcode
